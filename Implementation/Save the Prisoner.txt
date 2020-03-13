@@ -1,0 +1,28 @@
+Rust:
+
+use std::io;
+ 
+fn get_number() -> u32 {
+    let mut line = String::new();
+    io::stdin().read_line(&mut line).ok().expect("Failed to read line");
+    line.trim().parse::<u32>().unwrap()
+}
+ 
+fn get_numbers() -> Vec<u32> {
+    let mut line = String::new();
+    io::stdin().read_line(&mut line).ok().expect("Failed to read line");
+    line.split_whitespace().map(|s| s.parse::<u32>().unwrap()).collect()
+}
+ 
+fn solve_prisoner(n: u32, m: u32, s: u32) -> u32 {
+    ((s - 1 + m - 1 ) % n) +1
+}
+ 
+fn main() {
+    let t = get_number();
+    for _ in 0..t {
+        let line = get_numbers();
+        println!("{}", solve_prisoner(line[0], line[1], line[2]));
+    }
+}
+  
