@@ -1,0 +1,8 @@
+from collections import Counter
+
+_ = raw_input()
+arr = map(int, raw_input().strip().split())
+c = Counter(arr)
+mc = c.most_common(1)
+
+print len(arr) - mc[0][1]
